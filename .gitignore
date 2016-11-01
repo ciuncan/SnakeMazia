@@ -1,0 +1,8 @@
+
+*.so
+.idea/
+*.iml
+target/
+
+*.swp
+*~

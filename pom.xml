@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>snakemazia</groupId>
+    <artifactId>SnakeMazia</artifactId>
+    <version>1.2</version>
+
+
+    <properties>
+        <jmonkey.version>3.0.0.20120512-SNAPSHOT</jmonkey.version>
+        <scala.binary.version>2.10</scala.binary.version>
+        <scala.version>${scala.binary.version}.0</scala.version>
+    </properties>
+
+    <build>
+       <resources>
+            <resource>
+                <directory>assets</directory>
+            </resource>
+           <resource>
+               <directory>src/main/resources</directory>
+           </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifest>
+                                    <mainClass>snakemazia.Main</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>sonatype-public</id>
+            <name>sonatype public</name>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <!-- Note that the jmonkey.version variable is set in our parent pom.xml.
+        Currently the value is   3.0.0.20120512-SNAPSHOT
+    -->
+    <dependencies>
+
+        <dependency>
+           <groupId>com.jsuereth</groupId>
+           <artifactId>scala-arm_${scala.binary.version}</artifactId>
+           <version>1.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <!-- Contains just the jme3test demo classes, with main methods
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jmonkeyengine3</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        -->
+
+        <!-- WARNING:  Large (40M) block of test data.  Disable this
+            dependency when not needed.
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-testdata</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        -->
+
+
+        <!-- The core library -->
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-core</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+
+        <!-- LWJGL stuff -->
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-lwjgl</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-lwjgl-natives</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>lwjgl</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+
+        <!-- Bullet stuff
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-jbullet</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jbullet</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        -->
+
+        <!-- Feature libs
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-blender</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-desktop</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-effects</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-networking</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-terrain</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-plugins</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+
+        <!-- Ogg audio stuff -->
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-jogg</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>j-ogg-oggd</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>j-ogg-vorbisd</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+
+        <!-- Third party libs -->
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jinput</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>eventbus</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>stack-alloc</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>vecmath</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>xmlpull-xpp3</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+
+        <!-- Nifty GUI
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>jME3-niftygui</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>nifty</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>nifty-default-controls</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            < !
+            - - WARNING : Large - about 20M ->
+            <groupId>com.jme3</groupId>
+            <artifactId>nifty-examples</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>nifty-style-black</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+        -->
+
+    <!-- Test-phase-only dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

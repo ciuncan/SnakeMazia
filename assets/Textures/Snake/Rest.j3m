@@ -1,0 +1,10 @@
+Material Phong Rock : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+         Shininess: 5.0
+         DiffuseMap: Repeat Textures/Pond/Diffuse.jpg
+         NormalMap: Repeat Textures/Pond/Normal.png
+         UseMaterialColors : true
+         Diffuse  : 0.1 0.5 0.3 1
+         Specular  : 0.5 0.5 0.5 1
+     }
+}

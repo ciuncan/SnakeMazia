@@ -1,0 +1,12 @@
+Material Pong Rock : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+         Shininess: 8.0
+         DiffuseMap: Repeat Textures/Pond/Diffuse.jpg
+         NormalMap: Repeat Textures/Pond/Normal.png
+         UseMaterialColors : true
+         Diffuse : 0.8 0.8 0.8 1.0
+         Specular : 1.0 1.0 1.0 1.0
+     }
+     AdditionalRenderState {
+     }
+}

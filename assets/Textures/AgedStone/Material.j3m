@@ -1,0 +1,15 @@
+Material Phong Rock : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+         Shininess: 8.0
+         DiffuseMap: Textures/AgedStone/Diffuse.jpg
+         NormalMap: Textures/AgedStone/Normal.jpg
+         SpecularMap: Textures/AgedStone/ReflectiveOcclusion.jpg
+         PackedNormalParallax: false
+         ParallaxHeight: 5
+         SteepParallax : true
+         UseMaterialColors : true
+         Ambient  : 0.1 0.1 0.1 1
+         Diffuse  : 0.1 0.1 0.1 1
+         Specular : 1 1 1 1
+     }
+}
